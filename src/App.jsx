@@ -4,10 +4,12 @@ import Body from "./Components/Body";
 import Login from "./Components/Login";
 import Profile from "./Components/Profile";
 import Feed from "./Components/Feed";
+import { Provider } from "react-redux";
+import appStore from "./utils/appStore";
 
 const App = () => {
   return (
-    <>
+    <Provider store={appStore}>
       <BrowserRouter basename="/">
         <Routes>
           <Route path="/" element={<Body />}>
@@ -17,7 +19,7 @@ const App = () => {
           </Route>
         </Routes>
       </BrowserRouter>
-    </>
+    </Provider>
   );
 };
 
