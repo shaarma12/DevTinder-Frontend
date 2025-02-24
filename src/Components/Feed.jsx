@@ -20,15 +20,16 @@ const Feed = () => {
     }
   };
 
-  console.log(feedData);
   useEffect(() => {
     getFeed();
   }, []);
 
   return (
-    <div className="flex justify-center mb-32">
-      <UserCard data={feedData?.data[0]} />
-    </div>
+    feedData && (
+      <div className="flex justify-center mb-32">
+        <UserCard data={feedData?.data[0]} />
+      </div>
+    )
   );
 };
 

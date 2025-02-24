@@ -7,7 +7,7 @@ import { removeUser } from "../utils/userSlice";
 import { removeFeed } from "../utils/feedSlice";
 
 const Navbar = () => {
-  const loginUserData = useSelector((store) => store.user);
+  const loginUserData = useSelector((store) => store?.user);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const handleLogout = async () => {
@@ -21,7 +21,7 @@ const Navbar = () => {
       );
       dispatch(removeUser());
       dispatch(removeFeed());
-      navigate("/login");
+      return navigate("/login");
     } catch (err) {
       console.log(err.message);
     }
@@ -31,7 +31,9 @@ const Navbar = () => {
     <div>
       <div className="navbar bg-base-300 shadow-sm fixed top-0 z-10">
         <div className="flex-1">
-          <a className="btn btn-ghost text-xl">DevTinder</a>
+          <Link to="/" className="btn btn-ghost text-xl">
+            DevTinder
+          </Link>
         </div>
         {loginUserData && (
           <div className="flex justify-center items-center gap-5">
@@ -55,9 +57,8 @@ const Navbar = () => {
                   className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
                 >
                   <li>
-                    <Link to="/Profile" className="justify-between">
+                    <Link to="/profile" className="justify-between">
                       Profile
-                      <span className="badge">New</span>
                     </Link>
                   </li>
                   <li>
