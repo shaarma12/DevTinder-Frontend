@@ -14,7 +14,7 @@ const EditProfileForm = ({ userProfileData }) => {
   const [about, setAbout] = useState(userProfileData?.about);
   const [photoURL, setPhotoURL] = useState(userProfileData?.photoURL);
   const [gender, setGender] = useState(userProfileData?.gender);
-
+  const [error, setError] = useState("");
   const handleUpdate = async () => {
     try {
       const updatedUserProfile = await axios.patch(
@@ -32,7 +32,9 @@ const EditProfileForm = ({ userProfileData }) => {
       dispatch(addUser(updatedUserProfile?.data?.data));
       setToast(true);
     } catch (err) {
-      console.log(err.message);
+      console.log(err);
+      console.log(err?.response?.data?.error);
+      setError(err?.response?.data?.error);
     }
   };
 
@@ -55,7 +57,10 @@ const EditProfileForm = ({ userProfileData }) => {
                   className="input input-primary"
                   placeholder="Type here"
                   value={firstName}
-                  onChange={(e) => setFirstName(e.target.value)}
+                  onChange={(e) => {
+                    setFirstName(e.target.value);
+                    setError("");
+                  }}
                 />
               </fieldset>
               <fieldset className="fieldset">
@@ -65,7 +70,10 @@ const EditProfileForm = ({ userProfileData }) => {
                   className="input input-primary"
                   placeholder="Type here"
                   value={lastName}
-                  onChange={(e) => setLastName(e.target.value)}
+                  onChange={(e) => {
+                    setLastName(e.target.value);
+                    setError("");
+                  }}
                 />
               </fieldset>
               <fieldset className="fieldset">
@@ -75,7 +83,10 @@ const EditProfileForm = ({ userProfileData }) => {
                   className="input input-primary"
                   placeholder="Type here"
                   value={age}
-                  onChange={(e) => setAge(e.target.value)}
+                  onChange={(e) => {
+                    setAge(e.target.value);
+                    setError("");
+                  }}
                 />
               </fieldset>
               <fieldset className="fieldset">
@@ -85,7 +96,10 @@ const EditProfileForm = ({ userProfileData }) => {
                   className="input input-primary"
                   placeholder="Type here"
                   value={gender}
-                  onChange={(e) => setGender(e.target.value)}
+                  onChange={(e) => {
+                    setGender(e.target.value);
+                    setError("");
+                  }}
                 />
               </fieldset>
               <fieldset className="fieldset">
@@ -95,7 +109,10 @@ const EditProfileForm = ({ userProfileData }) => {
                   className="input input-primary"
                   placeholder="Type here"
                   value={about}
-                  onChange={(e) => setAbout(e.target.value)}
+                  onChange={(e) => {
+                    setAbout(e.target.value);
+                    setError("");
+                  }}
                 />
               </fieldset>
               <fieldset className="fieldset">
@@ -105,9 +122,13 @@ const EditProfileForm = ({ userProfileData }) => {
                   className="input input-primary"
                   placeholder="Type here"
                   value={photoURL}
-                  onChange={(e) => setPhotoURL(e.target.value)}
+                  onChange={(e) => {
+                    setPhotoURL(e.target.value);
+                    setError("");
+                  }}
                 />
               </fieldset>
+              <p className="text-red-500 text-sm">{error}</p>
               <div className="justify-center card-actions mt-4">
                 <button className="btn btn-primary" onClick={handleUpdate}>
                   Save Profile

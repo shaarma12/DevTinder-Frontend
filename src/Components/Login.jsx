@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const handleLogin = async () => {
@@ -26,6 +27,7 @@ const Login = () => {
       navigate("/");
     } catch (err) {
       console.error(err);
+      setError(err?.response?.data);
     }
   };
 
@@ -43,7 +45,10 @@ const Login = () => {
               className="input input-primary"
               placeholder="Type here"
               value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              onChange={(e) => {
+                setEmail(e.target.value);
+                setError("");
+              }}
             />
           </fieldset>
           <fieldset className="fieldset">
@@ -53,9 +58,13 @@ const Login = () => {
               className="input input-primary"
               placeholder="Type here"
               value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              onChange={(e) => {
+                setPassword(e.target.value);
+                setError("");
+              }}
             />
           </fieldset>
+          <p className="text-red-500 text-sm">{error}</p>
           <div className="justify-center card-actions mt-4">
             <button className="btn btn-primary" onClick={handleLogin}>
               Log in
