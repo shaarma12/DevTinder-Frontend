@@ -143,12 +143,10 @@ const EditProfileForm = ({ userProfileData }) => {
           </figure>
           <div className="card-body">
             <h2 className="card-title">{firstName + " " + lastName}</h2>
-            <div className="flex">
+            <div className="flex justify-evenly w-44">
               {age && <p>{age} Years old</p>}
-              {age && gender && (
-                <p className="text-4xl -mt-[1.3rem] -ml-40">.</p>
-              )}
-              {gender && <p className="-ml-40">{gender}</p>}
+              {age && gender && <p className="text-4xl -mt-[1.35rem]">.</p>}
+              {gender && <p className="">{gender}</p>}
             </div>
             <p>{about}</p>
           </div>

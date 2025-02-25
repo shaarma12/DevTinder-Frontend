@@ -8,12 +8,12 @@ const UserCard = ({ data }) => {
       </figure>
       <div className="card-body">
         <h2 className="card-title">{data?.firstName + " " + data?.lastName}</h2>
-        <div className="flex">
+        <div className="flex justify-evenly w-44">
           {data?.age && <p>{data?.age} Years old</p>}
           {data?.age && data?.gender && (
-            <p className="text-4xl -mt-[1.3rem] -ml-40">.</p>
+            <p className="text-4xl -mt-[1.35rem]">.</p>
           )}
-          {data?.gender && <p className="-ml-40">{data?.gender}</p>}
+          {data?.gender && <p className="">{data?.gender}</p>}
         </div>
         <p>{data?.about}</p>
         <div className="card-actions justify-center gap-14 mt-4">
