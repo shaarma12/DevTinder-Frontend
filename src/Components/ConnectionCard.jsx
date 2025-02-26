@@ -1,6 +1,8 @@
 import React from "react";
+import { useSelector } from "react-redux";
 
 const ConnectionCard = ({ data }) => {
+  const status = useSelector((store) => store?.request);
   return (
     <div>
       <div className="card w-[55rem] bg-base-200 card-md shadow-sm">
@@ -12,23 +14,33 @@ const ConnectionCard = ({ data }) => {
               </div>
             </div>
             <div>
-              <h2 className="card-title">
-                {data?.firstName + " " + data.lastName}
-              </h2>
-              <div className="flex justify-evenly w-44 my-1">
-                {data?.age && <p>{data?.age} Years old</p>}
-                {data?.age && data?.gender && (
-                  <p className="text-4xl -mt-[1.35rem]">.</p>
+              <div className="flex justify-between">
+                <div className="flex flex-col">
+                  <h2 className="card-title">
+                    {data?.firstName + " " + data.lastName}
+                  </h2>
+                  <div className="flex justify-evenly w-44 my-1">
+                    {data?.age && <p>{data?.age} Years old</p>}
+                    {data?.age && data?.gender && (
+                      <p className="text-4xl -mt-[1.35rem]">.</p>
+                    )}
+                    {data?.gender && <p>{data?.gender}</p>}
+                  </div>
+                </div>
+                {status && (
+                  <div className="justify-end card-actions">
+                    <button className="btn btn-error btn-outline rounded-full">
+                      Reject
+                    </button>
+                    <button className="btn btn-outline btn-primary rounded-full">
+                      Accept
+                    </button>
+                  </div>
                 )}
-                {data?.gender && <p>{data?.gender}</p>}
               </div>
               <p>{data?.about}</p>
             </div>
           </div>
-
-          {/* <div className="justify-end card-actions">
-            <button className="btn btn-primary">Chat Now</button>
-          </div> */}
         </div>
       </div>
     </div>

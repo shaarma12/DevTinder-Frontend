@@ -3,6 +3,7 @@ import { BASE_URL } from "../utils/constant";
 import axios from "axios";
 import ConnectionCard from "./ConnectionCard";
 import { useNavigate } from "react-router-dom";
+import NoDataCard from "./NoDataCard";
 
 const Friends = () => {
   const [connection, setConnection] = useState([]);
@@ -24,19 +25,13 @@ const Friends = () => {
 
   if (connection && connection.length === 0) {
     return (
-      <div className="flex flex-col justify-center items-center h-screen">
-        <p className="text-9xl">🥺</p>
-        <h1 className="mt-7 text-4xl font-semibold mb-4">No Connection Yet</h1>
-        <h1 className="text-wrap w-48 text-2xl ml-4">
-          Start connecting with people now!
-        </h1>
-        <button
-          className="btn btn-primary mt-12 w-44 text-lg rounded-full"
-          onClick={() => navigate("/")}
-        >
-          Find Friends
-        </button>
-      </div>
+      <NoDataCard
+        handleData={{
+          upperPara: "No Connection Yet",
+          lowerPara: "Start connecting with people now!",
+          btn: "Find Friends",
+        }}
+      />
     );
   }
   return (
