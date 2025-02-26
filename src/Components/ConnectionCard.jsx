@@ -6,7 +6,7 @@ import { removeRequest } from "../utils/requestSlice";
 
 const ConnectionCard = ({ data, requestId }) => {
   const dispatch = useDispatch();
-  const status = useSelector((store) => store?.request);
+  const status = useSelector((store) => store?.button);
   const handleRequest = async (reqId, status) => {
     const resData = await axios.post(
       BASE_URL + `/request/review/${status}/${reqId}`,
@@ -14,7 +14,6 @@ const ConnectionCard = ({ data, requestId }) => {
       { withCredentials: true }
     );
     dispatch(removeRequest(reqId));
-    console.log(resData);
   };
   return (
     <div>

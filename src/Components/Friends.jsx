@@ -2,12 +2,13 @@ import React, { useEffect, useState } from "react";
 import { BASE_URL } from "../utils/constant";
 import axios from "axios";
 import ConnectionCard from "./ConnectionCard";
-import { useNavigate } from "react-router-dom";
 import NoDataCard from "./NoDataCard";
+import { useDispatch } from "react-redux";
+import { addStatus } from "../utils/requestStatusSlice";
 
 const Friends = () => {
   const [connection, setConnection] = useState([]);
-  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const getConnections = async () => {
     try {
       const res = await axios.get(BASE_URL + "/user/connection", {
@@ -20,8 +21,12 @@ const Friends = () => {
   };
   useEffect(() => {
     getConnections();
-  }, []);
-  console.log(connection);
+    dispatch(addStatus(true));
+
+    return () => {
+      dispatch(addStatus(false));
+    };
+  }, [dispatch]);
 
   if (connection && connection.length === 0) {
     return (

@@ -2,10 +2,10 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { BASE_URL } from "../utils/constant";
 import { useDispatch, useSelector } from "react-redux";
-import { addStatus } from "../utils/requestStatusSlice";
 import ConnectionCard from "./ConnectionCard";
 import NoDataCard from "./NoDataCard";
 import { addRequest } from "../utils/requestSlice";
+import { addBtnStatus } from "../utils/buttonSlice";
 
 const Request = () => {
   const dispatch = useDispatch();
@@ -20,10 +20,10 @@ const Request = () => {
 
   useEffect(() => {
     getPendingRequests();
-    dispatch(addStatus(true));
+    dispatch(addBtnStatus(true));
 
     return () => {
-      dispatch(addStatus(false));
+      dispatch(addBtnStatus(false));
     };
   }, [dispatch]);
 

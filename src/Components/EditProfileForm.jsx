@@ -33,7 +33,6 @@ const EditProfileForm = ({ userProfileData }) => {
       setToast(true);
     } catch (err) {
       console.log(err);
-      console.log(err?.response?.data?.error);
       setError(err?.response?.data?.error);
     }
   };
