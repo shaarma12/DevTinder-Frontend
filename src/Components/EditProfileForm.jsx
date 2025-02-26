@@ -138,7 +138,7 @@ const EditProfileForm = ({ userProfileData }) => {
         </div>
         <div className="card bg-base-200 w-96 shadow-sm flex mt-14 md:mt-8 lg:mt-9 xl:mt-24">
           <figure>
-            <img src={photoURL} alt="userImg" className="w-full h-full" />
+            <img src={photoURL} alt="userImg" className="w-full h-[27rem]" />
           </figure>
           <div className="card-body">
             <h2 className="card-title">{firstName + " " + lastName}</h2>
