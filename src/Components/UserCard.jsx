@@ -7,7 +7,7 @@ import { updateFeed } from "../utils/feedSlice";
 const UserCard = ({ data }) => {
   const dispatch = useDispatch();
   const handleRequest = async (status, userId) => {
-    const reqRes = await axios.post(
+    await axios.post(
       BASE_URL + `/request/send/${status}/${userId}`,
       {},
       { withCredentials: true }
