@@ -1,21 +1,21 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { BASE_URL } from "../utils/constant";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addStatus } from "../utils/requestStatusSlice";
 import ConnectionCard from "./ConnectionCard";
 import NoDataCard from "./NoDataCard";
+import { addRequest } from "../utils/requestSlice";
 
 const Request = () => {
   const dispatch = useDispatch();
-  const [pendingRequest, setPendingRequest] = useState([]);
+  const pendingRequest = useSelector((store) => store?.pending);
 
   const getPendingRequests = async () => {
     const pendingRequestRespone = await axios.get(BASE_URL + "/user/request", {
       withCredentials: true,
     });
-    setPendingRequest(pendingRequestRespone?.data.data);
-    console.log(pendingRequestRespone);
+    dispatch(addRequest(pendingRequestRespone?.data.data));
   };
 
   useEffect(() => {
@@ -43,7 +43,13 @@ const Request = () => {
       <div className="mt-24 ml-10 flex flex-col items-center gap-4">
         <h1 className="text-5xl font-bold mb-4">Pending Requests</h1>
         {pendingRequest.map((i) => {
-          return <ConnectionCard key={i._id} data={i?.fromUserId} />;
+          return (
+            <ConnectionCard
+              key={i._id}
+              data={i?.fromUserId}
+              requestId={i._id}
+            />
+          );
         })}
       </div>
     )

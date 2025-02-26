@@ -1,8 +1,21 @@
+import axios from "axios";
 import React from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { BASE_URL } from "../utils/constant";
+import { removeRequest } from "../utils/requestSlice";
 
-const ConnectionCard = ({ data }) => {
+const ConnectionCard = ({ data, requestId }) => {
+  const dispatch = useDispatch();
   const status = useSelector((store) => store?.request);
+  const handleRequest = async (reqId, status) => {
+    const resData = await axios.post(
+      BASE_URL + `/request/review/${status}/${reqId}`,
+      {},
+      { withCredentials: true }
+    );
+    dispatch(removeRequest(reqId));
+    console.log(resData);
+  };
   return (
     <div>
       <div className="card w-[55rem] bg-base-200 card-md shadow-sm">
@@ -29,10 +42,16 @@ const ConnectionCard = ({ data }) => {
                 </div>
                 {status && (
                   <div className="justify-end card-actions">
-                    <button className="btn btn-error btn-outline rounded-full">
+                    <button
+                      className="btn btn-error btn-outline rounded-full"
+                      onClick={() => handleRequest(requestId, "rejected")}
+                    >
                       Reject
                     </button>
-                    <button className="btn btn-outline btn-primary rounded-full">
+                    <button
+                      className="btn btn-outline btn-primary rounded-full"
+                      onClick={() => handleRequest(requestId, "accepted")}
+                    >
                       Accept
                     </button>
                   </div>
