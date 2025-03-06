@@ -40,7 +40,7 @@ const ConnectionCard = ({ data, requestId }) => {
                   </div>
                 </div>
                 {status && (
-                  <div className="justify-end card-actions">
+                  <div className="justify-end card-actions absolute right-5">
                     <button
                       className="btn btn-error btn-outline rounded-full"
                       onClick={() => handleRequest(requestId, "rejected")}

@@ -43,9 +43,13 @@ const Friends = () => {
     connection && (
       <div className="mt-24 ml-10 flex flex-col items-center gap-4">
         <h1 className="text-5xl font-bold mb-4">Connections</h1>
-        {connection.map((i) => {
-          return <ConnectionCard key={i._id} data={i} />;
-        })}
+        <div className="overflow-hidden overflow-y-scroll scroll-smooth h-[27rem] no-scrollbar">
+          <div className="flex flex-col gap-4">
+            {connection.map((i) => {
+              return <ConnectionCard key={i._id} data={i} />;
+            })}
+          </div>
+        </div>
       </div>
     )
   );

@@ -15,11 +15,11 @@ const UserCard = ({ data }) => {
     dispatch(updateFeed(userId));
   };
   return (
-    <div className="card bg-base-200 w-96 shadow-sm flex mt-14 md:mt-8 lg:mt-9 xl:mt-24">
+    <div className="card bg-base-200 w-80 shadow-sm flex mt-14 md:mt-8 lg:mt-9 xl:mt-[4.8rem]">
       <figure>
-        <img src={data?.photoURL} alt="userImg" className="w-full h-72" />
+        <img src={data?.photoURL} alt="userImg" className="w-full h-64" />
       </figure>
-      <div className="card-body">
+      <div className="card-body -mt-4">
         <h2 className="card-title">{data?.firstName + " " + data?.lastName}</h2>
         <div className="flex justify-evenly w-44">
           {data?.age && <p>{data?.age} Years old</p>}
@@ -29,7 +29,7 @@ const UserCard = ({ data }) => {
           {data?.gender && <p className="">{data?.gender}</p>}
         </div>
         <p>{data?.about}</p>
-        <div className="card-actions justify-center gap-14 mt-4">
+        <div className="card-actions justify-center gap-14 pt-2">
           <button
             className="btn btn-error btn-soft"
             onClick={() => handleRequest("ignored", data?._id)}

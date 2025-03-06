@@ -42,15 +42,19 @@ const Request = () => {
     pendingRequest && (
       <div className="mt-24 ml-10 flex flex-col items-center gap-4">
         <h1 className="text-5xl font-bold mb-4">Pending Requests</h1>
-        {pendingRequest.map((i) => {
-          return (
-            <ConnectionCard
-              key={i._id}
-              data={i?.fromUserId}
-              requestId={i._id}
-            />
-          );
-        })}
+        <div className="overflow-hidden overflow-y-scroll scroll-smooth h-[27rem] no-scrollbar">
+          <div className="flex flex-col gap-4">
+            {pendingRequest.map((i) => {
+              return (
+                <ConnectionCard
+                  key={i._id}
+                  data={i?.fromUserId}
+                  requestId={i._id}
+                />
+              );
+            })}
+          </div>
+        </div>
       </div>
     )
   );

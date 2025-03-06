@@ -56,16 +56,20 @@ const Login = () => {
   };
 
   return (
-    <div className="flex justify-center items-center my-32">
-      <div className="card w-96 bg-base-200 card-xl shadow-sm">
+    <div className="flex justify-center items-center xl:my-32 lg:my-[5.5rem] md:my-[5.5rem] my-[5.6rem]">
+      <div className="card xl:w-96 lg:w-96 md:w-96 bg-base-200 card-xl shadow-sm">
         <div className="card-body">
           <div className="flex justify-center items-center">
-            <h2 className="card-title text-5xl mb-2">DevTinder</h2>
+            <h2 className="card-title xl:text-5xl md:text-5xl lg:text-5xl mb-2">
+              DevTinder
+            </h2>
           </div>
           {trigger === true && (
             <>
               <fieldset className="fieldset">
-                <legend className="fieldset-legend text-lg">First Name</legend>
+                <legend className="fieldset-legend xl:text-lg md:text-lg lg:text-lg">
+                  First Name
+                </legend>
                 <input
                   type="firstName"
                   className="input input-primary"
@@ -78,7 +82,9 @@ const Login = () => {
                 />
               </fieldset>
               <fieldset className="fieldset">
-                <legend className="fieldset-legend text-lg">Last Name</legend>
+                <legend className="fieldset-legend xl:text-lg md:text-lg lg:text-lg">
+                  Last Name
+                </legend>
                 <input
                   type="lastName"
                   className="input input-primary"
@@ -93,7 +99,9 @@ const Login = () => {
             </>
           )}
           <fieldset className="fieldset">
-            <legend className="fieldset-legend text-lg">Email</legend>
+            <legend className="fieldset-legend xl:text-lg md:text-lg lg:text-lg">
+              Email
+            </legend>
             <input
               type="email"
               className="input input-primary"
@@ -106,7 +114,9 @@ const Login = () => {
             />
           </fieldset>
           <fieldset className="fieldset">
-            <legend className="fieldset-legend text-lg">Password</legend>
+            <legend className="fieldset-legend xl:text-lg md:text-lg lg:text-lg">
+              Password
+            </legend>
             <input
               type="password"
               className="input input-primary"
