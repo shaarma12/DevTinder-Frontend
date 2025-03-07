@@ -17,11 +17,11 @@ const ConnectionCard = ({ data, requestId }) => {
   };
   return (
     <div>
-      <div className="card w-[55rem] bg-base-200 card-md shadow-sm">
+      <div className="card xl:w-[55rem] lg:w-[55rem] md:w-[44rem] bg-base-200 card-md shadow-sm">
         <div className="card-body">
           <div className="flex gap-6">
             <div className="avatar">
-              <div className="w-24 rounded-full">
+              <div className="xl:w-24 md:w-24 lg:w-24 rounded-full">
                 <img src={data?.photoURL} />
               </div>
             </div>

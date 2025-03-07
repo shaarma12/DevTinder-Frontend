@@ -31,13 +31,18 @@ const Navbar = () => {
     <div>
       <div className="navbar bg-base-300 shadow-sm fixed top-0 z-10">
         <div className="flex-1">
-          <Link to="/" className="btn btn-ghost text-xl">
+          <Link
+            to="/"
+            className="btn btn-ghost xl:text-xl md:text-xl lg:text-xl text-2xl"
+          >
             DevTinder
           </Link>
         </div>
         {loginUserData && (
           <div className="flex justify-center items-center gap-5">
-            <p>Welcome, {loginUserData?.firstName}</p>
+            <p className="xl:block lg:block md:block hidden">
+              Welcome, {loginUserData?.firstName}
+            </p>
             <div className="flex-none">
               <div className="dropdown dropdown-end mr-6">
                 <div

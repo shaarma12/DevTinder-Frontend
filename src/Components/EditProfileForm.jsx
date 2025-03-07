@@ -43,8 +43,8 @@ const EditProfileForm = ({ userProfileData }) => {
   return (
     <>
       <div className="flex justify-center gap-14 mb-32">
-        <div className="mt-14 md:mt-8 lg:mt-9 xl:mt-24">
-          <div className="card w-96 bg-base-200 card-xl shadow-sm">
+        <div className="mt-24 md:mt-24 lg:mt-24 xl:mt-24">
+          <div className="card xl:w-96 bg-base-200 card-xl shadow-sm">
             <div className="card-body">
               <div className="flex justify-center items-center">
                 <h2 className="card-title">Want To Edit Your Profile?</h2>
@@ -136,9 +136,13 @@ const EditProfileForm = ({ userProfileData }) => {
             </div>
           </div>
         </div>
-        <div className="card bg-base-200 w-96 shadow-sm flex mt-14 md:mt-8 lg:mt-9 xl:mt-24">
+        <div className="card xl:flex lg:flex md:flex hidden bg-base-200 xl:w-96 lg:w-96 md:w-80 shadow-sm mt-14 md:mt-24 lg:mt-24 xl:mt-24">
           <figure>
-            <img src={photoURL} alt="userImg" className="w-full h-[27rem]" />
+            <img
+              src={photoURL}
+              alt="userImg"
+              className="w-full xl:h-[27rem] lg:h-[22rem] md:h-[20rem]"
+            />
           </figure>
           <div className="card-body">
             <h2 className="card-title">{firstName + " " + lastName}</h2>

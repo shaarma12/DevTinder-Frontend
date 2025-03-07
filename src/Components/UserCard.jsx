@@ -15,7 +15,7 @@ const UserCard = ({ data }) => {
     dispatch(updateFeed(userId));
   };
   return (
-    <div className="card bg-base-200 w-80 shadow-sm flex mt-[5rem] md:mt-[4.3rem] lg:mt-[4.8rem] xl:mt-[4.8rem]">
+    <div className="card bg-base-200 xl:w-96 w-80 shadow-sm flex mt-[5rem] md:mt-[4.3rem] lg:mt-[4.8rem] xl:mt-[4.8rem]">
       <figure>
         <img
           src={data?.photoURL}
@@ -24,7 +24,7 @@ const UserCard = ({ data }) => {
         />
       </figure>
       <div className="card-body -mt-4">
-        <h2 className="card-title xl:text-lg lg:text-lg md:text-lg text-2xl">
+        <h2 className="card-title xl:text-xl lg:text-lg md:text-lg text-2xl">
           {data?.firstName + " " + data?.lastName}
         </h2>
         <div className="flex justify-evenly w-44">
