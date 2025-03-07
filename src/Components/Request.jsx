@@ -40,7 +40,7 @@ const Request = () => {
 
   return (
     pendingRequest && (
-      <div className="mt-24 ml-10 flex flex-col items-center gap-4">
+      <div className="mt-24 flex flex-col items-center gap-4">
         <h1 className="text-5xl font-bold mb-4">Pending Requests</h1>
         <div className="overflow-hidden overflow-y-scroll scroll-smooth h-[27rem] no-scrollbar">
           <div className="flex flex-col gap-4">
