@@ -15,12 +15,18 @@ const UserCard = ({ data }) => {
     dispatch(updateFeed(userId));
   };
   return (
-    <div className="card bg-base-200 w-80 shadow-sm flex mt-14 md:mt-8 lg:mt-9 xl:mt-[4.8rem]">
+    <div className="card bg-base-200 w-80 shadow-sm flex mt-[5rem] md:mt-[4.3rem] lg:mt-[4.8rem] xl:mt-[4.8rem]">
       <figure>
-        <img src={data?.photoURL} alt="userImg" className="w-full h-64" />
+        <img
+          src={data?.photoURL}
+          alt="userImg"
+          className="w-full xl:h-64 lg:h-44 md:h-48 h-72"
+        />
       </figure>
       <div className="card-body -mt-4">
-        <h2 className="card-title">{data?.firstName + " " + data?.lastName}</h2>
+        <h2 className="card-title xl:text-lg lg:text-lg md:text-lg text-2xl">
+          {data?.firstName + " " + data?.lastName}
+        </h2>
         <div className="flex justify-evenly w-44">
           {data?.age && <p>{data?.age} Years old</p>}
           {data?.age && data?.gender && (
@@ -28,7 +34,7 @@ const UserCard = ({ data }) => {
           )}
           {data?.gender && <p className="">{data?.gender}</p>}
         </div>
-        <p>{data?.about}</p>
+        <p className="xl:block lg:block md:block hidden">{data?.about}</p>
         <div className="card-actions justify-center gap-14 pt-2">
           <button
             className="btn btn-error btn-soft"
