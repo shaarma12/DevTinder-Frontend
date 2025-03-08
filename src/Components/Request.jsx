@@ -6,6 +6,7 @@ import ConnectionCard from "./ConnectionCard";
 import NoDataCard from "./NoDataCard";
 import { addRequest } from "../utils/requestSlice";
 import { addBtnStatus } from "../utils/buttonSlice";
+import FriendsCard from "./FriendsCard";
 
 const Request = () => {
   const dispatch = useDispatch();
@@ -41,12 +42,27 @@ const Request = () => {
   return (
     pendingRequest && (
       <div className="mt-24 flex flex-col items-center gap-4">
-        <h1 className="text-5xl font-bold mb-4">Pending Requests</h1>
-        <div className="overflow-hidden overflow-y-scroll scroll-smooth h-[27rem] no-scrollbar">
+        <h1 className="text-5xl font-bold xl:mb-4 lg:mb-4 md:mb-4 xl:block lg:block md:block hidden">
+          Pending Requests
+        </h1>
+        <div className="xl:block lg:block md:block hidden overflow-hidden overflow-y-scroll scroll-smooth xl:h-[27rem] lg:h-[22rem] md:h-[23rem] h-[50rem] no-scrollbar">
           <div className="flex flex-col gap-4">
             {pendingRequest.map((i) => {
               return (
                 <ConnectionCard
+                  key={i._id}
+                  data={i?.fromUserId}
+                  requestId={i._id}
+                />
+              );
+            })}
+          </div>
+        </div>
+        <div className="xl:hidden lg:hidden md:hidden block overflow-hidden overflow-x-scroll scroll-smooth no-scrollbar -mt-4 w-[22rem]">
+          <div className="flex gap-4">
+            {pendingRequest.map((i) => {
+              return (
+                <FriendsCard
                   key={i._id}
                   data={i?.fromUserId}
                   requestId={i._id}

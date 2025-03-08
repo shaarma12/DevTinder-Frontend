@@ -62,21 +62,42 @@ const Navbar = () => {
                   className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
                 >
                   <li>
-                    <Link to="/" className="justify-between">
+                    <Link
+                      to="/"
+                      className="justify-between xl:text-sm lg:text-sm md:text-sm text-base"
+                    >
                       Home
                     </Link>
-                    <Link to="/profile" className="justify-between">
+                    <Link
+                      to="/profile"
+                      className="justify-between xl:text-sm lg:text-sm md:text-sm text-base"
+                    >
                       Profile
                     </Link>
                   </li>
                   <li>
-                    <Link to="/connections">Friends</Link>
+                    <Link
+                      to="/connections"
+                      className="xl:text-sm lg:text-sm md:text-sm text-base"
+                    >
+                      Friends
+                    </Link>
                   </li>
                   <li>
-                    <Link to="/request">Pending Requests</Link>
+                    <Link
+                      to="/request"
+                      className="xl:text-sm lg:text-sm md:text-sm text-base"
+                    >
+                      Pending Requests
+                    </Link>
                   </li>
                   <li>
-                    <Link onClick={handleLogout}>Logout</Link>
+                    <Link
+                      onClick={handleLogout}
+                      className="xl:text-sm lg:text-sm md:text-sm text-base"
+                    >
+                      Logout
+                    </Link>
                   </li>
                 </ul>
               </div>
